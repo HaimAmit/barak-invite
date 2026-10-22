@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="יומיים של כיף בגליל, במתנה לברק מעמית ומאור">
+<meta property="og:title" content="בואו לגליל!">
+<meta property="og:description" content="יש לך הזמנה. לא לפתוח לפני 3.1 (טוב, אפשר)">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F3E6CF">
+<title>בואו לגליל</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Suez+One&family=Rubik:wght@400;500;700&family=Amatic+SC:wght@700&display=swap">
+<style>
+/* Layout: one narrow column like a stack of travel ephemera: envelope, poster, ticket, postcards, calendar, luggage tag, letter, ticket stub. Single warm-paper look by design. */
+:root {
+  --paper: #F3E6CF;
+  --paper-2: #EAD8B8;
+  --card: #FBF4E6;
+  --ink: #2B2118;
+  --ink-soft: #6A5642;
+  --terracotta: #C2513A;
+  --sun: #EE8A35;
+  --mustard: #F2C35B;
+  --olive: #5E7232;
+  --olive-dark: #3E4D22;
+  --teal: #23767B;
+  --font-poster: "Karantina", "Suez One", "Arial Narrow", sans-serif;
+  --font-head: "Suez One", "Rubik", Georgia, serif;
+  --font-body: "Rubik", "Arial Hebrew", Arial, sans-serif;
+  --font-hand: "Amatic SC", "Karantina", cursive;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-inline: 16px;
+  padding-block: 28px 64px;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: .35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .33  0 0 0 0 .2  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+main { max-width: 480px; margin-inline: auto; display: grid; gap: 56px; }
+h2 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+  color: var(--terracotta);
+}
+.kicker {
+  font-size: 13px;
+  letter-spacing: .12em;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+}
+.section-head { display: grid; gap: 4px; margin-bottom: 18px; }
+.section-head p { margin: 0; color: var(--ink-soft); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+/* Envelope */
+.env-wrap { display: grid; justify-items: center; gap: 14px; padding-top: 40px; }
+.env {
+  position: relative;
+  width: min(340px, 100%);
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  cursor: pointer;
+  border: 0; padding: 0; background: none;
+  filter: drop-shadow(0 14px 18px rgba(60, 35, 15, .25));
+}
+.env-back, .env-pocket, .env-flap { position: absolute; inset: 0; border-radius: 6px; }
+.env-back { background: var(--paper-2); }
+.env-letter {
+  position: absolute;
+  inset: 8% 7% 6%;
+  background: var(--card);
+  border-radius: 4px;
+  display: grid; place-items: center;
+  text-align: center;
+  padding: 12px;
+  transition: transform .9s cubic-bezier(.2,.8,.2,1) .35s;
+  z-index: 2;
+}
+.env-letter strong { font-family: var(--font-poster); font-size: 46px; line-height: .9; color: var(--terracotta); display: block; }
+.env-letter span { font-size: 14px; color: var(--ink-soft); }
+.env-pocket {
+  z-index: 3;
+  background: #E6CFA6;
+  clip-path: polygon(0 30%, 50% 62%, 100% 30%, 100% 100%, 0 100%);
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 0 16px 14px;
+  font-size: 13px; color: var(--ink-soft);
+}
+.env-pocket b { display: block; font-family: var(--font-head); font-weight: 400; font-size: 20px; color: var(--ink); }
+.env-flap {
+  z-index: 4;
+  background: #DDC291;
+  clip-path: polygon(0 0, 100% 0, 50% 62%);
+  transform-origin: top center;
+  transition: transform .6s ease, z-index 0s .3s;
+}
+.seal {
+  position: absolute; z-index: 5;
+  left: 50%; top: 62%;
+  width: 62px; height: 62px;
+  margin: -31px 0 0 -31px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #D9624A, var(--terracotta) 55%, #8F3424);
+  display: grid; place-items: center;
+  color: #F6D9C8;
+  font-family: var(--font-head); font-size: 28px;
+  box-shadow: 0 3px 0 #7A2C1E, inset 0 0 0 5px rgba(0,0,0,.12);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.env.open .seal { opacity: 0; transform: scale(.6); }
+.env.open .env-flap { transform: rotateX(180deg); z-index: 1; }
+.env.open .env-letter { transform: translateY(-58%) rotate(-2deg); }
+.env-hint { font-size: 15px; color: var(--ink-soft); margin: 0; text-align: center; }
+.env-hint em { font-style: normal; color: var(--terracotta); font-weight: 700; }
+@media (hover: hover) { .env:not(.open):hover .env-flap { transform: rotateX(14deg); } }
+
+/* Poster */
+.poster {
+  background: var(--card);
+  padding: 12px;
+  box-shadow: 0 1px 0 var(--paper-2), 0 18px 30px -12px rgba(60, 35, 15, .35);
+  transform: rotate(-.6deg);
+}
+.poster-inner { border: 2px solid var(--ink); overflow: hidden; display: grid; }
+.poster-top { background: #F6C86E; text-align: center; padding: 18px 12px 0; }
+.poster-top .presents { font-size: 13px; letter-spacing: .14em; font-weight: 700; color: var(--olive-dark); margin: 0; }
+.poster-title {
+  font-family: var(--font-poster);
+  font-weight: 700;
+  font-size: clamp(76px, 24vw, 118px);
+  line-height: .82;
+  margin: 6px 0 0;
+  color: var(--terracotta);
+  text-shadow: 3px 3px 0 var(--ink);
+  letter-spacing: .01em;
+}
+.poster-sub { font-family: var(--font-head); font-size: 20px; margin: 8px 0 0; color: var(--ink); }
+.poster svg { display: block; width: 100%; height: auto; }
+.poster-band {
+  background: var(--olive-dark);
+  color: var(--mustard);
+  text-align: center;
+  padding: 10px 8px 12px;
+  display: grid; gap: 2px;
+}
+.poster-band b { font-family: var(--font-poster); font-weight: 700; font-size: 30px; line-height: 1; letter-spacing: .04em; }
+.poster-band span { font-size: 13px; color: #E9DDBF; letter-spacing: .08em; }
+.ribbon {
+  justify-self: center;
+  margin-top: -6px;
+  background: var(--terracotta);
+  color: var(--card);
+  font-family: var(--font-head);
+  font-size: 18px;
+  padding: 6px 26px;
+  clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%, 6% 50%);
+  transform: rotate(1.2deg);
+}
+
+/* Passenger ticket */
+.ticket {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 10px 22px -12px rgba(60, 35, 15, .4);
+  position: relative;
+}
+.ticket-main { padding: 18px 18px 18px 14px; display: grid; gap: 12px; min-width: 0; }
+.ticket-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field small { display: block; font-size: 12px; letter-spacing: .1em; color: var(--ink-soft); font-weight: 700; }
+.field b { font-family: var(--font-head); font-weight: 400; font-size: 21px; line-height: 1.2; }
+.field .note { font-size: 13px; color: var(--ink-soft); }
+.ticket-stub {
+  border-inline-start: 2px dashed var(--paper-2);
+  padding: 18px 14px;
+  display: grid; place-items: center; align-content: center; gap: 4px;
+  background: var(--mustard);
+  border-start-end-radius: 10px; border-end-end-radius: 10px;
+  text-align: center;
+  writing-mode: vertical-rl;
+  font-family: var(--font-poster); font-weight: 700; font-size: 28px; letter-spacing: .06em;
+  color: var(--ink);
+}
+.ticket::before, .ticket::after {
+  content: ""; position: absolute;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--paper);
+  inset-inline-end: 52px;
+}
+.ticket::before { top: -10px; }
+.ticket::after { bottom: -10px; }
+
+/* Postcards */
+.day-label {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-poster); font-weight: 700; font-size: 32px;
+  color: var(--olive-dark);
+  margin: 6px 0 10px;
+}
+.day-label::after { content: ""; flex: 1; border-top: 2px dotted var(--ink-soft); opacity: .5; }
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cards .wide { grid-column: 1 / -1; }
+.pc { perspective: 900px; border: 0; padding: 0; background: none; cursor: pointer; text-align: inherit; }
+.pc-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.3,1.3,.5,1);
+  height: 100%;
+}
+.pc.flipped .pc-inner { transform: rotateY(180deg); }
+.face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 9px;
+  background:
+    radial-gradient(circle, var(--paper) 4px, transparent 4.6px) -7px -7px / 14px 14px,
+    var(--card);
+  filter: drop-shadow(0 6px 8px rgba(60, 35, 15, .18));
+}
+.face-in {
+  height: 100%;
+  border: 1.5px solid var(--ink);
+  padding: 12px 10px 10px;
+  display: grid; gap: 6px; align-content: start;
+  position: relative;
+}
+.front .face-in { background: var(--tint, var(--mustard)); }
+.pc:nth-child(odd) { transform: rotate(-1deg); }
+.pc:nth-child(even) { transform: rotate(1deg); }
+.back { transform: rotateY(180deg); }
+.back .face-in { background: var(--card); align-content: center; }
+.pc-icon { width: 46px; height: 46px; }
+.pc-title { font-family: var(--font-head); font-size: 19px; line-height: 1.2; margin: 0; }
+.pc-when { font-size: 12px; letter-spacing: .08em; font-weight: 700; color: rgba(43,33,24,.72); margin: 0; }
+.pc-tap { font-size: 12px; color: rgba(43,33,24,.7); margin: 0; }
+.pc-teaser { font-family: var(--font-head); font-size: 18px; line-height: 1.35; margin: 0; color: var(--ink); }
+.secret {
+  justify-self: start;
+  font-size: 12px; font-weight: 700;
+  color: var(--terracotta);
+  border: 1.5px solid var(--terracotta);
+  border-radius: 999px;
+  padding: 1px 10px;
+  transform: rotate(-3deg);
+}
+.postmark {
+  position: absolute; top: 8px; inset-inline-start: 8px;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid rgba(43,33,24,.45);
+  display: grid; place-items: center; text-align: center;
+  font-size: 9px; line-height: 1.1; color: rgba(43,33,24,.6);
+  transform: rotate(12deg);
+}
+.home-note { margin: 14px 0 0; text-align: center; color: var(--ink-soft); font-size: 15px; }
+
+/* Calendar */
+.when { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: center; }
+.cal {
+  background: var(--card);
+  box-shadow: 0 10px 20px -10px rgba(60, 35, 15, .4);
+  text-align: center;
+  transform: rotate(2deg);
+  position: relative;
+}
+.cal::before {
+  content: ""; position: absolute; top: -8px; left: 22%; right: 22%; height: 14px;
+  background: radial-gradient(circle, var(--ink) 4px, transparent 4.5px) 0 0 / 24px 14px repeat-x;
+}
+.cal-head { background: var(--teal); color: var(--card); font-family: var(--font-head); font-size: 20px; padding: 10px 6px 6px; }
+.cal-num { font-family: var(--font-poster); font-weight: 700; font-size: 92px; line-height: .9; color: var(--terracotta); padding: 6px 0 0; }
+.cal-foot { font-size: 13px; color: var(--ink-soft); padding: 0 6px 12px; }
+.when-text { display: grid; gap: 12px; min-width: 0; }
+.when-text p { margin: 0; }
+.counts { display: grid; gap: 8px; }
+.count {
+  display: flex; align-items: baseline; gap: 8px;
+  border-bottom: 1.5px dashed rgba(43,33,24,.25);
+  padding-bottom: 6px;
+}
+.count b { font-family: var(--font-poster); font-weight: 700; font-size: 40px; line-height: 1; color: var(--olive); font-variant-numeric: tabular-nums; }
+.count span { font-size: 14px; color: var(--ink-soft); }
+
+/* Letter */
+.letter {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 37px, rgba(35,118,123,.22) 37px 38px),
+    var(--card);
+  padding: 26px 24px 30px;
+  box-shadow: 0 12px 24px -14px rgba(60, 35, 15, .45);
+  transform: rotate(-.8deg);
+  font-family: var(--font-hand);
+  font-size: 28px;
+  line-height: 38px;
+  color: #2E3C5C;
+}
+.letter p { margin: 0 0 38px; }
+.letter p:last-child { margin: 0; }
+.sign { text-align: end; }
+.sign b { display: block; font-size: 38px; color: var(--terracotta); }
+
+/* RSVP */
+.rsvp { text-align: center; display: grid; gap: 18px; justify-items: center; }
+.rsvp h2 { font-size: 34px; }
+.rsvp-actions { position: relative; width: 100%; min-height: 170px; display: grid; justify-items: center; align-content: start; gap: 18px; }
+.yes {
+  background: var(--terracotta);
+  color: var(--card);
+  border: 0;
+  font-family: var(--font-poster); font-weight: 700;
+  font-size: 40px; line-height: 1;
+  padding: 16px 34px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 5px 0 #7A2C1E;
+  transition: transform .12s, box-shadow .12s;
+  -webkit-mask: radial-gradient(circle 8px at 0 50%, transparent 98%, #000) , radial-gradient(circle 8px at 100% 50%, transparent 98%, #000);
+  -webkit-mask-composite: source-in;
+  mask: radial-gradient(circle 8px at 0 50%, transparent 98%, #000) , radial-gradient(circle 8px at 100% 50%, transparent 98%, #000);
+  mask-composite: intersect;
+}
+.yes:active { transform: translateY(4px); box-shadow: 0 1px 0 #7A2C1E; }
+.maybe {
+  background: transparent;
+  border: 1.5px dashed var(--ink-soft);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform .25s cubic-bezier(.3,1.4,.5,1);
+}
+.maybe-msg { min-height: 1.4em; margin: 0; font-size: 15px; color: var(--ink-soft); }
+.approved { display: grid; gap: 14px; justify-items: center; }
+.stamp-ok {
+  font-family: var(--font-poster); font-weight: 700;
+  font-size: 46px; line-height: 1;
+  color: var(--olive);
+  border: 4px double var(--olive);
+  padding: 8px 22px 4px;
+  border-radius: 8px;
+  transform: rotate(-8deg);
+  animation: thump .5s cubic-bezier(.2,1.6,.4,1);
+}
+@keyframes thump { from { transform: rotate(-8deg) scale(2.2); opacity: 0; } to { transform: rotate(-8deg) scale(1); opacity: 1; } }
+.wa {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal); color: var(--card);
+  text-decoration: none; font-weight: 700;
+  padding: 12px 22px; border-radius: 999px;
+}
+.small { font-size: 13px; color: var(--ink-soft); margin: 0; }
+footer { text-align: center; font-size: 13px; color: var(--ink-soft); }
+
+#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 60; }
+
+@media (max-width: 380px) {
+  .when { grid-template-columns: 1fr; justify-items: center; }
+  .cal { width: 160px; }
+  .when-text { justify-self: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01s !important; animation-duration: .01s !important; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main dir="rtl" lang="he">
+
+  <section class="env-wrap" aria-label="מעטפה">
+    <button class="env" id="env" type="button" aria-label="פתיחת המעטפה">
+      <div class="env-back"></div>
+      <div class="env-letter"><div><strong>בואו לגליל!</strong><span>יש לך הזמנה ↓</span></div></div>
+      <div class="env-pocket">
+        <div><small>לכבוד</small><b>ברק</b></div>
+        <div style="text-align:left"><small>מאת</small><b>עמית ומאור</b></div>
+      </div>
+      <div class="env-flap"></div>
+      <div class="seal">ב</div>
+    </button>
+    <p class="env-hint" id="envHint">לא לפתוח לפני 3.1 <em>(טוב, אפשר)</em>. הקש על המעטפה.</p>
+  </section>
+
+  <section class="poster" id="poster" aria-label="פוסטר">
+    <div class="poster-inner">
+      <div class="poster-top">
+        <p class="presents">משרד התיירות של התאומים מציג</p>
+        <h1 class="poster-title">בואו לגליל!</h1>
+        <p class="poster-sub">יומיים של כיף · במתנה לברק</p>
+      </div>
+      <svg viewBox="0 0 400 300" role="img" aria-label="נוף הגליל: שמש, הרים, הכנרת וברושים">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F6C86E"/>
+            <stop offset="1" stop-color="#F6E2B8"/>
+          </linearGradient>
+          <polygon id="ray" points="196,0 204,0 201,120 199,120" fill="#FBE3A6"/>
+        </defs>
+        <rect width="400" height="300" fill="url(#sky)"/>
+        <g transform="translate(0,-10)" opacity=".7">
+          <use href="#ray" transform="rotate(-70 200 130)"/>
+          <use href="#ray" transform="rotate(-50 200 130)"/>
+          <use href="#ray" transform="rotate(-30 200 130)"/>
+          <use href="#ray" transform="rotate(-10 200 130)"/>
+          <use href="#ray" transform="rotate(10 200 130)"/>
+          <use href="#ray" transform="rotate(30 200 130)"/>
+          <use href="#ray" transform="rotate(50 200 130)"/>
+          <use href="#ray" transform="rotate(70 200 130)"/>
+        </g>
+        <circle cx="200" cy="130" r="66" fill="#EE8A35"/>
+        <circle cx="200" cy="130" r="66" fill="none" stroke="#C2513A" stroke-width="3" stroke-dasharray="2 7"/>
+        <path d="M86 70 q8 -8 16 0 q8 -8 16 0" fill="none" stroke="#2B2118" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M290 52 q6 -6 12 0 q6 -6 12 0" fill="none" stroke="#2B2118" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M0 170 C50 128 100 136 150 156 C200 176 240 118 300 124 C345 128 375 146 400 140 V300 H0Z" fill="#D69563"/>
+        <path d="M0 200 C70 166 130 182 190 192 C260 204 310 166 400 176 V300 H0Z" fill="#8A9A4B"/>
+        <path d="M24 236 C110 214 290 214 380 238 C300 254 110 256 24 236Z" fill="#23767B"/>
+        <path d="M70 236 h40 M160 232 h60 M250 240 h50" stroke="#7FC0BC" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M0 262 C80 244 160 266 230 272 C300 278 350 252 400 256 V300 H0Z" fill="#5E7232"/>
+        <ellipse cx="330" cy="232" rx="10" ry="40" fill="#3E4D22"/>
+        <ellipse cx="352" cy="244" rx="8" ry="30" fill="#3E4D22"/>
+        <ellipse cx="56" cy="246" rx="9" ry="32" fill="#3E4D22"/>
+        <path d="M120 300 C150 282 200 280 240 300Z" fill="#C2513A"/>
+        <path d="M138 300 q10 -12 22 -4 q12 -10 26 0 q10 -8 20 4" fill="none" stroke="#F2C35B" stroke-width="2.5"/>
+      </svg>
+      <div class="poster-band">
+        <b>מסלול · אוכל · בירה · לינה · חומוס</b>
+        <span>אביב 2027 · צפון הארץ</span>
+      </div>
+    </div>
+  </section>
+  <div class="ribbon" style="margin-top:-74px; position:relative; z-index:2">יום הולדת שמח · 3.1</div>
+
+  <section aria-labelledby="pass-h">
+    <div class="section-head">
+      <p class="kicker">כרטיס נסיעה</p>
+      <h2 id="pass-h">הנוסעים</h2>
+    </div>
+    <div class="ticket">
+      <div class="ticket-main">
+        <div class="field"><small>נוסע ראשי</small><b>ברק</b></div>
+        <div class="field"><small>מלווים</small><b>עמית ומאור</b><div class="note">תאומים, בלי אפשרות החזרה.</div></div>
+        <div class="ticket-row">
+          <div class="field"><small>יעד</small><b>הגליל</b></div>
+          <div class="field"><small>משך</small><b>יומיים, לילה</b></div>
+        </div>
+        <div class="ticket-row">
+          <div class="field"><small>מחלקה</small><b>ראשונה</b></div>
+          <div class="field"><small>מחיר</small><b>עלינו</b></div>
+        </div>
+      </div>
+      <div class="ticket-stub" aria-hidden="true">GALIL 2027</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="route-h">
+    <div class="section-head">
+      <p class="kicker">המסלול</p>
+      <h2 id="route-h">מה מחכה לך</h2>
+      <p>הקש על כל גלויה כדי להפוך אותה. המקומות המדויקים נשארים סוד.</p>
+    </div>
+
+    <div class="day-label">יום א׳</div>
+    <div class="cards">
+      <button class="pc" type="button" style="--tint:#B9C77E">
+        <div class="pc-inner">
+          <div class="face front"><div class="face-in">
+            <svg class="pc-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="36" cy="13" r="6" fill="#EE8A35" stroke="#2B2118" stroke-width="2"/><path d="M3 41 L17 17 L25 29 L31 21 L45 41 Z" fill="#5E7232" stroke="#2B2118" stroke-width="2.4" stroke-linejoin="round"/><path d="M13 24 L17 17 L21 23" fill="none" stroke="#FBF4E6" stroke-width="2.4" stroke-linejoin="round"/></svg>
+            <p class="pc-when">בוקר</p>
+            <p class="pc-title">מסלול קצר עם נוף</p>
+            <p class="pc-tap">להפוך ↻</p>
+          </div></div>
+          <div class="face back"><div class="face-in">
+            <div class="postmark">גליל<br>עליון</div>
+            <p class="pc-teaser">קצר. מבטיחים. <br>(בערך)</p>
+            <span class="secret">המיקום: סוד</span>
+          </div></div>
+        </div>
+      </button>
+
+      <button class="pc" type="button" style="--tint:#F2C35B">
+        <div class="pc-inner">
+          <div class="face front"><div class="face-in">
+            <svg class="pc-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 C8 18 22 7 41 7 C41 27 30 40 8 40 Z" fill="#5E7232" stroke="#2B2118" stroke-width="2.4" stroke-linejoin="round"/><path d="M8 40 L31 17 M18 30 h8 M24 24 v-7" fill="none" stroke="#FBF4E6" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <p class="pc-when">צהריים מאוחרים</p>
+            <p class="pc-title">ארוחה טעימה</p>
+            <p class="pc-tap">להפוך ↻</p>
+          </div></div>
+          <div class="face back"><div class="face-in">
+            <div class="postmark">דואר<br>ירוק</div>
+            <p class="pc-teaser">תצא שבע, ולא תשאל איפה החלבון.</p>
+            <span class="secret">המסעדה: סוד</span>
+          </div></div>
+        </div>
+      </button>
+
+      <button class="pc" type="button" style="--tint:#EE9C5A">
+        <div class="pc-inner">
+          <div class="face front"><div class="face-in">
+            <svg class="pc-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M32 19 h5 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-5" fill="none" stroke="#2B2118" stroke-width="2.6"/><rect x="12" y="15" width="20" height="27" rx="2.5" fill="#F2C35B" stroke="#2B2118" stroke-width="2.4"/><path d="M10 16 a5 5 0 0 1 6 -6 a6 6 0 0 1 10 -1 a5 5 0 0 1 8 5 v3 H10 Z" fill="#FBF4E6" stroke="#2B2118" stroke-width="2.2" stroke-linejoin="round"/><path d="M18 23 v13 M25 23 v13" stroke="#C98A1E" stroke-width="2" stroke-linecap="round"/></svg>
+            <p class="pc-when">ערב</p>
+            <p class="pc-title">פאב מקומי</p>
+            <p class="pc-tap">להפוך ↻</p>
+          </div></div>
+          <div class="face back"><div class="face-in">
+            <div class="postmark">לחיים<br>!</div>
+            <p class="pc-teaser">בירה צפונית ושולחן עץ.</p>
+            <span class="secret">הבר: סוד</span>
+          </div></div>
+        </div>
+      </button>
+
+      <button class="pc" type="button" style="--tint:#8FB8B4">
+        <div class="pc-inner">
+          <div class="face front"><div class="face-in">
+            <svg class="pc-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M38 6 a9 9 0 1 0 6 13 a7 7 0 0 1 -6 -13 Z" fill="#F2C35B" stroke="#2B2118" stroke-width="2"/><rect x="4" y="26" width="40" height="11" rx="2" fill="#C2513A" stroke="#2B2118" stroke-width="2.4"/><rect x="7" y="20" width="13" height="7" rx="3" fill="#FBF4E6" stroke="#2B2118" stroke-width="2.2"/><path d="M6 37 v5 M42 37 v5" stroke="#2B2118" stroke-width="2.6" stroke-linecap="round"/></svg>
+            <p class="pc-when">לילה</p>
+            <p class="pc-title">לילה במלון</p>
+            <p class="pc-tap">להפוך ↻</p>
+          </div></div>
+          <div class="face back"><div class="face-in">
+            <div class="postmark">ש.ש.ש<br>שקט</div>
+            <p class="pc-teaser">מקום סודי, כרית רכה. אף אחד לא נוחר (לא מבטיחים).</p>
+            <span class="secret">המלון: סוד</span>
+          </div></div>
+        </div>
+      </button>
+    </div>
+
+    <div class="day-label" style="margin-top:26px">יום ב׳</div>
+    <div class="cards">
+      <button class="pc wide" type="button" style="--tint:#E8B77C">
+        <div class="pc-inner">
+          <div class="face front"><div class="face-in">
+            <svg class="pc-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 h40 a20 16 0 0 1 -40 0 Z" fill="#C2513A" stroke="#2B2118" stroke-width="2.4" stroke-linejoin="round"/><path d="M9 22 c4 -6 26 -6 30 0" fill="#F1DDB0" stroke="#2B2118" stroke-width="2"/><path d="M18 20 c3 -3 9 -3 12 0" fill="none" stroke="#B48A1C" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="18" r="2.2" fill="#E8B77C" stroke="#2B2118" stroke-width="1.2"/><circle cx="31" cy="18" r="2.2" fill="#E8B77C" stroke="#2B2118" stroke-width="1.2"/><circle cx="24" cy="16" r="1.4" fill="#5E7232"/></svg>
+            <p class="pc-when">בוקר, ואז הביתה</p>
+            <p class="pc-title">חומוס של בוקר</p>
+            <p class="pc-tap">להפוך ↻</p>
+          </div></div>
+          <div class="face back"><div class="face-in">
+            <div class="postmark">ניגוב<br>רשמי</div>
+            <p class="pc-teaser">אין טיול לצפון בלי ניגוב. אחר כך נוסעים הביתה, מלאים ומרוצים.</p>
+            <span class="secret">החומוסייה: סוד</span>
+          </div></div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <section aria-labelledby="when-h">
+    <div class="section-head">
+      <p class="kicker">תאריך</p>
+      <h2 id="when-h">מתי?</h2>
+    </div>
+    <div class="when">
+      <div class="cal" aria-hidden="true">
+        <div class="cal-head">אפריל 2027</div>
+        <div class="cal-num">?</div>
+        <div class="cal-foot">היום המדויק ייקבע ביחד</div>
+      </div>
+      <div class="when-text">
+        <p>אחרי החורף, כשהגליל ירוק והכנרת מלאה. בוחרים את התאריך ביחד.</p>
+        <div class="counts">
+          <div class="count"><b id="cBday">–</b><span>ימים ליום ההולדת (3.1)</span></div>
+          <div class="count"><b id="cTrip">–</b><span>ימים, בערך, לטיול</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="מכתב">
+    <div class="letter">
+      <p>ברק יקר,</p>
+      <p>זה קצת מוקדם, אבל לא יכולנו לחכות. יום הולדת שמח!</p>
+      <p>רצינו לתת לך משהו שאי אפשר לעטוף: יומיים ביחד, בלי לחץ. רק טבע, אוכל טוב, בירה והרבה צחוקים.</p>
+      <p>אתה הרבה יותר מבן דוד בשבילנו, ומגיע לך את כל הכיף שבעולם.</p>
+      <p class="sign">מחכים לאפריל,<b>עמית ומאור</b></p>
+    </div>
+  </section>
+
+  <section class="rsvp" aria-labelledby="rsvp-h">
+    <div class="section-head" style="justify-items:center">
+      <p class="kicker">אישור הגעה</p>
+      <h2 id="rsvp-h">אז מה אתה אומר?</h2>
+    </div>
+    <div class="rsvp-actions" id="actions">
+      <button class="yes" id="yes" type="button">אני בפנים!</button>
+      <button class="maybe" id="maybe" type="button">צריך לחשוב על זה…</button>
+      <p class="maybe-msg" id="maybeMsg" aria-live="polite"></p>
+    </div>
+    <div class="approved" id="approved" hidden>
+      <div class="stamp-ok">כרטיס מאושר</div>
+      <p>מעולה. נתראה בגליל!</p>
+    </div>
+  </section>
+
+  <footer>נעשה באהבה בשביל ברק · עמית ומאור · 2027</footer>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var colors = ['#C2513A', '#EE8A35', '#F2C35B', '#5E7232', '#23767B', '#FBF4E6'];
+  var canvas = document.getElementById('confetti');
+  var ctx = canvas.getContext('2d');
+  var parts = [], running = false;
+
+  function size() {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = innerWidth * dpr; canvas.height = innerHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size(); addEventListener('resize', size);
+
+  function burst(x, y, n) {
+    if (reduce) return;
+    for (var i = 0; i < n; i++) {
+      var a = Math.random() * Math.PI * 2, s = 4 + Math.random() * 8;
+      parts.push({ x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 6, r: Math.random() * 6.28,
+        vr: (Math.random() - .5) * .3, w: 6 + Math.random() * 6, h: 4 + Math.random() * 5,
+        c: colors[(Math.random() * colors.length) | 0], life: 160 + Math.random() * 60 });
+    }
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }
+  function tick() {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    parts = parts.filter(function (p) { return p.life > 0 && p.y < innerHeight + 30; });
+    parts.forEach(function (p) {
+      p.vy += .22; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life--;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.r * 2)));
+      ctx.restore();
+    });
+    if (parts.length) requestAnimationFrame(tick); else { running = false; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+  }
+
+  var env = document.getElementById('env');
+  env.addEventListener('click', function () {
+    if (env.classList.contains('open')) {
+      document.getElementById('poster').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      return;
+    }
+    env.classList.add('open');
+    document.getElementById('envHint').innerHTML = 'מזל טוב! <em>גלול למטה</em> ותגלה מה מחכה לך.';
+    var r = env.getBoundingClientRect();
+    setTimeout(function () { burst(r.left + r.width / 2, r.top + r.height * .2, 140); }, 700);
+    setTimeout(function () {
+      document.getElementById('poster').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    }, 2100);
+  });
+
+  document.querySelectorAll('.pc').forEach(function (pc) {
+    pc.addEventListener('click', function () { pc.classList.toggle('flipped'); });
+  });
+
+  function daysTo(y, m, d) {
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    return Math.max(0, Math.round((new Date(y, m, d) - now) / 864e5));
+  }
+  document.getElementById('cBday').textContent = daysTo(2027, 0, 3);
+  document.getElementById('cTrip').textContent = daysTo(2027, 3, 15);
+
+  var maybe = document.getElementById('maybe'), msg = document.getElementById('maybeMsg');
+  var lines = ['אופס, הכפתור ברח', 'הוא ממש לא רוצה שתלחץ עליו', 'עוד ניסיון אחד?', 'טוב, אין אפשרות כזאת. רק ״אני בפנים״.'];
+  var escapes = 0;
+  function run(e) {
+    if (escapes >= lines.length) return;
+    if (e) e.preventDefault();
+    var box = document.getElementById('actions').getBoundingClientRect();
+    var maxX = Math.max(0, box.width / 2 - maybe.offsetWidth / 2 - 4);
+    var x = (Math.random() < .5 ? -1 : 1) * (maxX * (.5 + Math.random() * .5));
+    var y = 10 + Math.random() * 40;
+    maybe.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + (Math.random() * 16 - 8) + 'deg)';
+    msg.textContent = lines[escapes++];
+    if (escapes >= lines.length) { maybe.disabled = true; maybe.style.opacity = '.35'; }
+  }
+  maybe.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') run(); });
+  maybe.addEventListener('pointerdown', run);
+  maybe.addEventListener('click', function (e) { e.preventDefault(); run(); });
+
+  document.getElementById('yes').addEventListener('click', function () {
+    var r = this.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top, 200);
+    document.getElementById('actions').hidden = true;
+    document.getElementById('approved').hidden = false;
+  });
+})();
+</script>
+</body>
+</html>
