@@ -684,7 +684,11 @@ footer { text-align: center; font-size: 13px; color: var(--ink-soft); }
     var now = new Date(); now.setHours(0, 0, 0, 0);
     return Math.max(0, Math.round((new Date(y, m, d) - now) / 864e5));
   }
-  document.getElementById('cBday').textContent = daysTo(2027, 0, 3);
+  var bday = document.getElementById('cBday'), bdayDate = new Date(2027, 0, 3), today = new Date();
+  today.setHours(0, 0, 0, 0);
+  if (today > bdayDate) bday.parentNode.hidden = true;
+  else if (+today === +bdayDate) { bday.textContent = 'היום!'; bday.nextElementSibling.textContent = 'יום הולדת שמח!'; }
+  else bday.textContent = daysTo(2027, 0, 3);
   document.getElementById('cTrip').textContent = daysTo(2027, 3, 15);
 
   var maybe = document.getElementById('maybe'), msg = document.getElementById('maybeMsg');
